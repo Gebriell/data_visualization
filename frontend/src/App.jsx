@@ -7,14 +7,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   // try fetching from the backend
-  /*
+  const [msg, setMsg] = useState('');
   useEffect(() => {
-    fetch('http://localhost:3000/test')
+    fetch('http://localhost:3000/')
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // console.log(data);
+        setMsg(data.body);})
   }, [])
-  */
-
+  
   return (
     <>
       <div>
@@ -39,7 +40,7 @@ function App() {
       </p>
 
       <p>
-        To be done: print test message from backend
+        Backend says: {msg}
       </p>
     </>
   )
