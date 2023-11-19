@@ -1,18 +1,4 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+/*
 
 a {
   font-weight: 500;
@@ -26,8 +12,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
 }
 
@@ -66,4 +50,51 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+*/
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.canvas {
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.canvas .content {
+  padding: 0 1.5rem;
+}
+
+.navbar {
+  display: flex;
+  background-color: #fff;
+  border-bottom: 1px solid #333;
+  align-items: center;
+  box-shadow: 0 3px 0px #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo-sub {
+  display: flex;
+  margin-left: auto;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
 }

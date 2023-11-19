@@ -7,11 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "mkdir -p node_modules; touch ./node_modules/.metadata_never_index"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.2.0",
+    "chart.js": "^4.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-bootstrap": "^2.9.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
