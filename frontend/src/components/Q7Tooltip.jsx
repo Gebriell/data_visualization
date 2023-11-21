@@ -20,7 +20,7 @@ function Q7Tooltip({ data }) {
 				Most Earning Channel
 				<div className="title-and-text">
 					<h2>{data?.bestChannel.name}</h2>
-					(${data?.bestChannel.avgYearlyEarnings.toLocaleString()})
+					Avg. ${data?.bestChannel.avgYearlyEarnings.toLocaleString()} /yr
 				</div>
 			</div>
 		</div>

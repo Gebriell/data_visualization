@@ -32,7 +32,7 @@ function Question7() {
   useEffect(() => {
     if (!dataForDisplay || !mapData) return;
 
-    const [width, height] = [1280, 600];
+    const [width, height] = [640, 300];
 
     // the canvas
     const svg = d3
@@ -46,7 +46,7 @@ function Question7() {
     const path = d3.geoPath(
       d3
         .geoMercator()
-        .scale(210)
+        .scale(90)
         .translate([width / 2, height / 1.5])
     );
 
