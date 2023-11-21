@@ -98,3 +98,80 @@ button:focus-visible {
   text-decoration: none;
   color: #000;
 }
+
+.q7-worldmap {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.q7-worldmap .top-ten {
+  transition: all 0.25s;
+  /* fill: orange; */
+  stroke: black;
+}
+.q7-worldmap .top-ten:hover {
+  /* make a slightly lighter orange and make it float a little bit*/
+  fill: #ff8c00;
+}
+
+.q7-tooltip {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #333;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.25s;
+  opacity: 0;
+  visibility: visible;
+  line-height: 1;
+}
+
+.q7-tooltip .country{
+  display: flex;
+  align-items: baseline;
+}
+
+.q7-tooltip .country .rank{
+  display: flex;
+  margin-right: 0;
+  margin-left: auto;
+  align-items: baseline;
+}
+
+.q7-tooltip .country .rank h2{
+  margin-left: 0.5rem;
+}
+
+.q7-tooltip hr {
+  color: #eee
+}
+
+.q7-tooltip .stats {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.q7-tooltip .stats .stats-row{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 100%;
+}
+
+.q7-tooltip .stats .stats-row h2{
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.q7-tooltip .stats .stats-row .title-and-text{
+  margin-right: 0;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
