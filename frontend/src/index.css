@@ -82,6 +82,7 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 1;
+  margin-bottom: 2.5rem;
 }
 
 .navbar .logo {
@@ -174,4 +175,19 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   text-align: right;
+}
+
+.footer{
+  display: flex;
+  border-top: 1px solid #ccc;
+  margin-top: 3rem;
+}
+
+.footer a{
+  color: #000;
+  text-decoration: none;
+}
+
+.footer .footer-right{
+  margin-left: auto;
 }
