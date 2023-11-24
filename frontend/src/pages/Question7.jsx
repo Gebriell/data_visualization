@@ -175,7 +175,7 @@ function Question7() {
     <div>
       <h1>Which Parts of the World Made the Most with YT?</h1>
       {!pending && <svg className="q7-worldmap" ref={svgReference}></svg>}
-      <p>Click on any highlighted region for details!</p>
+      <p style={{textAlign: "center", color: "#666"}}>Click on any highlighted region for details!</p>
       <Q7Tooltip data={tooltipData} />
     </div>
   );
