@@ -74,15 +74,15 @@ button:focus-visible {
 }
 
 .navbar {
+  /* position: absolute; */
   display: flex;
   background-color: #fff;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #999;
   align-items: center;
-  box-shadow: 0 3px 0px #eee;
   position: sticky;
   top: 0;
   z-index: 1;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .navbar .logo {
@@ -190,4 +190,77 @@ button:focus-visible {
 
 .footer .footer-right{
   margin-left: auto;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing .title {
+  font-size: 1.25em;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  margin-top: -3rem;
+}
+
+.landing .title h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.landing .left {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  width: 50%;
+}
+
+.landing .left .description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+.landing .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.landing .questions {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.question * {
+  text-decoration: none;
+}
+
+.question p {
+  color: #777;
+}
+
+.question h2 {
+  color: #000;
 }
