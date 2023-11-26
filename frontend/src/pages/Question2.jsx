@@ -55,7 +55,7 @@ function Question2() {
       <div>
         <button onClick={() => handleChartChange('top5')}>Top 5</button>
         <button onClick={() => handleChartChange('top10')}>Top 10</button>
-        <button onClick={() => handleChartChange('topAll')}>Top All</button>
+        <button onClick={() => handleChartChange('topAll')}>All</button>
       </div>
   
       <div style={{width: '45%'}}>
