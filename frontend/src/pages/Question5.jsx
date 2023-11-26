@@ -65,7 +65,7 @@ function Question5() {
 
   return (
     <div>
-      <h1>Which genres are most likely to be subscribed?</h1>
+      <h1>Which genres are most likely to be subscribed to?</h1>
       <canvas ref={chartContainer} width="400" height="400" />
     </div>
   );

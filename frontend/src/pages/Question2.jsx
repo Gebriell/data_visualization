@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect, useState, useRef } from "react";
 import Chart from 'chart.js/auto';
 
 function Question2() {
@@ -9,6 +10,7 @@ function Question2() {
   });
   const [currentChart, setCurrentChart] = useState('topAll');
   const [pending, setPending] = useState(true);
+  const chartRef = useRef();
 
   useEffect(() => {
     fetch("http://localhost:3000/q2")
@@ -20,47 +22,50 @@ function Question2() {
   }, []);
 
   useEffect(() => {
-    const ctx = document.getElementById('pieChart');
-    new Chart(ctx, {
+    if (!pending && chartRef.current) {
+      const ctx = chartRef.current.getContext('2d');
+      const chartInstance = new Chart(ctx, {
         type: 'pie',
         data: dataDisp[currentChart],
-    }); [dataDisp, currentChart]
-
-    try {
-        new Chart(ctx, {
-            type: 'pie',
-            data: dataDisp[currentChart],
-        });
-    } catch (error) {
-        console.log(error);
-    }}, [dataDisp, currentChart]);
-
-    function handleTop5() {
-        setCurrentChart('top5');
+      });
+      return () => chartInstance.destroy(); // Cleanup previous chart instance
     }
-  
-    function handleTop10() {
-    setCurrentChart('top10');
+  }, [dataDisp, currentChart, pending]);
+
+  function handleChartChange(chartType) {
+    setCurrentChart(chartType);
   }
 
-    function handleTopAll() {
-        setCurrentChart('topAll');
-    }
+  const chartStyle = {
+    maxHeight: '80vh', // Adjust as needed for responsiveness
+    maxWidth: '100%', // Adjust as needed for responsiveness
+  };
 
   return (
-    <div>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '90%' 
+    }}>
+  
+      <h2>Top 5, Top 10 and All Genres by Size</h2>
+  
       <div>
-        <button onClick={() => handleTop5()}>Top 5</button>
-        <button onClick={() => handleTop10()}>Top 10</button>
-        <button onClick={() => handleTopAll()}>Top All</button>
+        <button onClick={() => handleChartChange('top5')}>Top 5</button>
+        <button onClick={() => handleChartChange('top10')}>Top 10</button>
+        <button onClick={() => handleChartChange('topAll')}>Top All</button>
       </div>
-      <div>
+  
+      <div style={{width: '45%'}}>
         {pending ? (
-          <p>Loading...</p>
+          <p>Loading...</p>  
         ) : (
-          <canvas id="pieChart" width="400" height="400"></canvas>
+          <canvas ref={chartRef} />
         )}
       </div>
+  
     </div>
   );
 }
