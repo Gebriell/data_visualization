@@ -29,7 +29,7 @@ function Canvas() {
               <WithFooter
                 children={<Question1 />}
                 prev={{ link: "/", title: "Landing" }}
-                next={{ link: "/q2", title: "Q2" }}
+                next={{ link: "/q2", title: "Top Produced Genres" }}
               />
             }
           />
@@ -38,8 +38,8 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question2 />}
-                prev={{ link: "/q1", title: "Q1" }}
-                next={{ link: "/q3", title: "Q3" }}
+                prev={{ link: "/q1", title: "Most Watched Genre" }}
+                next={{ link: "/q3", title: "Top Creator's Homes" }}
               />
             }
           />        
@@ -48,8 +48,8 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question3 />}
-                prev={{ link: "/q2", title: "Q2" }}
-                next={{ link: "/q4", title: "Q4" }}
+                prev={{ link: "/q2", title: "Top Produced Genres" }}
+                next={{ link: "/q4", title: "Top Genres & Regions" }}
               />
             }
           />
@@ -58,8 +58,8 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question4 />}
-                prev={{ link: "/q3", title: "Q3" }}
-                next={{ link: "/q5", title: "Q5" }}
+                prev={{ link: "/q3", title: "Top Creator's Homes" }}
+                next={{ link: "/q5", title: "Genres with the most Potential" }}
               />
             }
           />
@@ -68,8 +68,8 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question5 />}
-                prev={{ link: "/q4", title: "Q4" }}
-                next={{ link: "/q6", title: "Q6" }}
+                prev={{ link: "/q4", title: "Top Genres & Regions" }}
+                next={{ link: "/q6", title: "Years when Top Creators Emerged" }}
               />
             }
           />
@@ -78,8 +78,8 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question6 />}
-                prev={{ link: "/q5", title: "Q5" }}
-                next={{ link: "/q7", title: "Q7" }}
+                prev={{ link: "/q5", title: "Genres with the most Potential" }}
+                next={{ link: "/q7", title: "Places that Makes the Most with YT" }}
               />
             }
           />
@@ -88,7 +88,7 @@ function Canvas() {
             element={
               <WithFooter
                 children={<Question7 />}
-                prev={{ link: "/q6", title: "Q6" }}
+                prev={{ link: "/q6", title: "Years when Top Creators Emerged" }}
                 next={{ link: "/", title: "Landing" }}
               />
             }

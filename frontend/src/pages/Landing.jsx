@@ -31,7 +31,7 @@ function Landing() {
       <section className="questions">
         <div className="question q1">
           <Link to="/q1">
-            <h2>Top Genres</h2>
+            <h2>Most Watched Genres</h2>
             <p>Genres most watched and subscribed</p>
           </Link>
         </div>
@@ -39,14 +39,14 @@ function Landing() {
         <div className="question q2">
           <Link to="/q2">
             <h2>Top Produced Genres</h2>
-            <p>What kind of content are everyone making?</p>
+            <p>What kind of content are they making?</p>
           </Link>
         </div>
 
         <div className="question q3">
           <Link to="/q3">
             <h2>Top Creator's Homes</h2>
-            <p>Which parts of the world do top creators come from? </p>
+            <p>Which parts of the world do top creators come from, and what are they making? </p>
           </Link>
         </div>
 
