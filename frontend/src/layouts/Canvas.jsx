@@ -1,12 +1,15 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Question6 from "../pages/Question6";
-import Navbar from "../components/Navbar";
-import Question7 from "../pages/Question7";
-import WithFooter from "./WithFooter";
-import Landing from "../pages/Landing";
+import Question1 from '../pages/Question1'
+import Question2 from '../pages/Question2'
 import Question3 from '../pages/Question3'
 import Question4 from '../pages/Question4'
+import Question5 from '../pages/Question5'
+import Question6 from "../pages/Question6";
+import Question7 from "../pages/Question7";
+import Navbar from "../components/Navbar";
+import WithFooter from "./WithFooter";
+import Landing from "../pages/Landing";
 
 /**
  * This canvas is the main container for all the pages including the navbar
@@ -17,10 +20,29 @@ function Canvas() {
   return (
     <div className="canvas">
       <Navbar />
-
       <div className="content">
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route
+            path="/q1"
+            element={
+              <WithFooter
+                children={<Question1 />}
+                prev={{ link: "/", title: "Landing" }}
+                next={{ link: "/q2", title: "Q2" }}
+              />
+            }
+          />
+          <Route
+            path="/q2"
+            element={
+              <WithFooter
+                children={<Question2 />}
+                prev={{ link: "/q1", title: "Q1" }}
+                next={{ link: "/q3", title: "Q3" }}
+              />
+            }
+          />        
           <Route
             path="/q3"
             element={
@@ -42,6 +64,16 @@ function Canvas() {
             }
           />
           <Route
+            path="/q5"
+            element={
+              <WithFooter
+                children={<Question5 />}
+                prev={{ link: "/q4", title: "Q4" }}
+                next={{ link: "/q6", title: "Q6" }}
+              />
+            }
+          />
+          <Route
             path="/q6"
             element={
               <WithFooter
@@ -57,7 +89,7 @@ function Canvas() {
               <WithFooter
                 children={<Question7 />}
                 prev={{ link: "/q6", title: "Q6" }}
-                next={{ link: "", title: "" }}
+                next={{ link: "/", title: "Landing" }}
               />
             }
           />

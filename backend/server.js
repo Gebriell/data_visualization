@@ -28,6 +28,172 @@ app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
 
+// endpoint for q1
+app.get('/q1', (req, res) => {
+  fs.readFile(csvFilePath, (err, fileData) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error reading CSV file');
+    }
+
+    const data = parser.parse(fileData, { columns: true });
+
+    const genreViews = {};
+    data.forEach((row) => {
+      if (!genreViews[row.channel_type]) {
+        genreViews[row.channel_type] = 0;
+      }
+      genreViews[row.channel_type] += parseInt(row['video views']);
+    });
+
+    const sortedGenres = Object.entries(genreViews)
+      .map(([genre, views]) => ({ genre, views }))
+      .sort((a, b) => b.views - a.views);
+
+    const labels = sortedGenres.map((genre) => genre.genre);
+    const datasets = sortedGenres.map((genre, i) => ({
+      label: genre.genre,
+      data: genre.views,
+      backgroundColor: `hsl(${(i * 360) / sortedGenres.length}, 100%, 50%)`,
+    }));
+
+    const finalData = {
+      labels: labels,
+      datasets: datasets,
+    };
+
+    res.status(200).send(finalData);
+  });
+});
+
+
+
+// endpoint for q2
+app.get('/q2', (req, res) => {
+  fs.readFile(csvFilePath, (err, fileData) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error reading CSV file');
+    }
+
+    const data = parser.parse(fileData, { columns: true });
+
+    // Aggregate by genre
+    const genreCounts = {};
+    data.forEach(row => {
+      if (!genreCounts[row.channel_type]) {
+        genreCounts[row.channel_type] = 0;
+      }
+      genreCounts[row.channel_type]++;
+    });
+
+    // Map to array
+    let sortedGenres = Object.entries(genreCounts)
+      .map(([genre, count]) => ({ genre, count }))
+      .sort((a, b) => b.count - a.count);
+
+    // Top 5, 10, and all
+    const top5 = sortedGenres.slice(0, 5);
+    const top10 = sortedGenres.slice(0, 10);
+    const topAll = sortedGenres;
+
+    // Extract labels and data for all datasets
+    const top5Labels = top5.map(g => g.genre);
+    const top5Data = top5.map(g => g.count);
+
+    const top10Labels = top10.map(g => g.genre);
+    const top10Data = top10.map(g => g.count);
+
+    const topAllLabels = topAll.map(g => g.genre);
+    const topAllData = topAll.map(g => g.count);
+
+    // Function to generate colors
+    const generateColors = (length) => {
+      const colors = [];
+      for (let i = 0; i < length; i++) {
+        colors.push(`hsl(${(i * 360) / length}, 100%, 50%)`);
+      }
+      return colors;
+    };
+
+    // Map datasets with unique colors for each
+    const top5Dataset = {
+      labels: top5Labels,
+      datasets: [{
+        data: top5Data,
+        backgroundColor: generateColors(top5Labels.length),
+      }]
+    };
+
+    const top10Dataset = {
+      labels: top10Labels,
+      datasets: [{
+        data: top10Data,
+        backgroundColor: generateColors(top10Labels.length),
+      }]
+    };
+
+    const topAllDataset = {
+      labels: topAllLabels,
+      datasets: [{
+        data: topAllData,
+        backgroundColor: generateColors(topAllLabels.length),
+      }]
+    };
+
+    res.status(200).send({
+      top5: top5Dataset,
+      top10: top10Dataset,
+      topAll: topAllDataset
+    });
+  });
+});
+
+
+
+// endpoint for q5
+app.get('/q5', (req, res) => {
+  fs.readFile(csvFilePath, (err, fileData) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error reading CSV file');
+    }
+
+    const data = parser.parse(fileData, { columns: true });
+
+    const genreSubscribers = {};
+    data.forEach((row) => {
+      if (!genreSubscribers[row.channel_type]) {
+        genreSubscribers[row.channel_type] = 0;
+      }
+      genreSubscribers[row.channel_type] += parseInt(row.subscribers);
+    });
+
+    const sortedGenres = Object.entries(genreSubscribers)
+      .map(([genre, subscribers]) => ({ genre, subscribers }))
+      .sort((a, b) => b.subscribers - a.subscribers);
+
+    const labels = sortedGenres.map((genre) => genre.genre);
+
+    const datasets = sortedGenres.map((genre, i) => ({
+      label: genre.genre,
+      data: genre.subscribers,
+      backgroundColor: `hsl(${(i * 360) / sortedGenres.length}, 100%, 50%)`,
+    }));
+
+    const chartData = {
+      labels,
+      datasets,
+    };
+
+    res.status(200).send(chartData);
+  });
+});
+
+
+
+
+
 // endpoint for Q6
 app.get('/q6', (req, res) => {
 
