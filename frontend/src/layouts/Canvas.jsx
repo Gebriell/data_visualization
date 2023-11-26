@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Question6 from "../pages/Question6";
 import Navbar from "../components/Navbar";
 import Question7 from "../pages/Question7";
-import Question7Canvas from "../pages/Question7Canvas";
 import WithFooter from "./WithFooter";
 import Landing from "../pages/Landing";
 import Question3 from '../pages/Question3'
