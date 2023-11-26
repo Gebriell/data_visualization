@@ -7,6 +7,7 @@ const fs = require('fs');
 // lodash and csv parsing for Q6, might also be useful for other Qs!
 const lodash = require('lodash');
 const parser = require('csv-parse/sync');
+const csv = require('csv-parser');
 
 // minheap for Q7
 const MinHeap = require('heap-js').Heap;
@@ -333,7 +334,90 @@ app.get('/q7', (req, res) => {
     });
 
     const dataForDisplay = topTenCountries.toArray().sort((a, b) => b.totalYearlyEarnings - a.totalYearlyEarnings);
+    // append the rank to each country
+    for (let i = 0; i < dataForDisplay.length; i++) {
+      dataForDisplay[i].rank = i + 1;
+    }
 
-    res.status(200).send({ dataForDisplay });
+    // sort an array of the names of the top 10 countries by the way
+    const top = dataForDisplay.map(country => { return country.country });
+    console.log(top);
+
+    res.status(200).send({ dataForDisplay: dataForDisplay, topTenCountries: top });
   });
+});
+
+
+//endpoint for Question 3
+app.get('/q3/:category', (req, res) => {
+
+  const countryCounts = new Map();
+  const category = req.params.category
+
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on('data', (row) => {
+
+      if(row.category === category){
+          if(countryCounts.has(row.Country)){
+              countryCounts.set(row.Country, countryCounts.get(row.Country) + 1)
+          }
+          else{
+              countryCounts.set(row.Country, 1)
+          }
+      }
+
+    })
+    .on('end', () => {
+      for( let [k, v] of countryCounts.entries()){
+        if ( k === "United States")
+          countryCounts.set("United States of America", countryCounts.get(k))
+      }
+      countryCounts.delete("United States")
+      const data = Array.from([...countryCounts.entries()].sort(
+                              (a, b) => b[1] - a[1]).slice(0,5));
+      res.json(data);
+    });
+
+});
+
+
+// endpoint for Question 4
+app.get('/q4/:category', (req, res) => {
+
+  const countryCounts = new Map();
+  const category = req.params.category
+  var otherTotal = 0;
+  const theData = [];
+
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on('data', (row) => {
+
+      if(row.category === category){
+          if(countryCounts.has(row.Country)){
+              countryCounts.set(row.Country, countryCounts.get(row.Country) + 1)
+          }
+          else{
+              countryCounts.set(row.Country, 1)
+          }
+      }
+
+    })
+    .on('end', () => {
+      const data = Array.from([...countryCounts.entries()].sort(
+                              (a, b) => b[1] - a[1]));
+      
+      for(let i=6; i< data.length; i++){
+        otherTotal += data[i][1]
+      }
+      for(let i=0; i<6; i++){
+        theData.push(data[i]);
+      }
+      theData.push(['Other', otherTotal])
+
+      console.log(theData);
+      res.json(theData);
+    });
+
 });
