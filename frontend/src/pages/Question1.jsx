@@ -33,6 +33,7 @@ function Question1() {
 
       new Chart(ctx, {
         type: 'bar',
+        labels: genres.labels,
         data: genres,
         options: {
           indexAxis: 'y',
@@ -45,7 +46,7 @@ function Question1() {
                 usePointStyle: true, // Use point style for legend
               },
             },
-          },
+        },
           scales: {
             x: {
               beginAtZero: true,

@@ -23,14 +23,26 @@ function Question5() {
         type: 'bar',
         data: {
           labels: labels,
-          datasets: datasets.map(item => ({
-            label: item.label,
-            data: [item.data], // Ensure data is in an array format
-            backgroundColor: item.backgroundColor,
-          })),
+          datasets: [
+            {
+              data: datasets.map(item => item.data),
+              backgroundColor: datasets.map(item => item.backgroundColor )
+            }
+          ],
         },
         options: {
-          indexAxis: 'y',
+            stacked: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    boxWidth: 10, // Adjust box width for legend colors
+                    usePointStyle: true, // Use point style for legend
+                },
+            },
+        },
           scales: {
             x: {
               beginAtZero: true,
