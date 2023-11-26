@@ -74,14 +74,15 @@ button:focus-visible {
 }
 
 .navbar {
+  /* position: absolute; */
   display: flex;
   background-color: #fff;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #999;
   align-items: center;
-  box-shadow: 0 3px 0px #eee;
   position: sticky;
   top: 0;
   z-index: 1;
+  margin-bottom: 1rem;
 }
 
 .navbar .logo {
@@ -96,5 +97,170 @@ button:focus-visible {
 
 .navbar a {
   text-decoration: none;
+  color: #000;
+}
+
+.q7-worldmap {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.q7-worldmap .top-ten {
+  transition: all 0.25s;
+  /* fill: orange; */
+  stroke: black;
+}
+.q7-worldmap .top-ten:hover {
+  /* make a slightly lighter orange and make it float a little bit*/
+  fill: #ff8c00;
+}
+
+.q7-tooltip {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #333;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.25s;
+  opacity: 0;
+  visibility: visible;
+  line-height: 1;
+}
+
+.q7-tooltip .country{
+  display: flex;
+  align-items: baseline;
+}
+
+.q7-tooltip .country .rank{
+  display: flex;
+  margin-right: 0;
+  margin-left: auto;
+  align-items: baseline;
+}
+
+.q7-tooltip .country .rank h2{
+  margin-left: 0.5rem;
+}
+
+.q7-tooltip hr {
+  color: #eee
+}
+
+.q7-tooltip .stats {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.q7-tooltip .stats .stats-row{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 100%;
+}
+
+.q7-tooltip .stats .stats-row h2{
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.q7-tooltip .stats .stats-row .title-and-text{
+  margin-right: 0;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.footer{
+  display: flex;
+  border-top: 1px solid #ccc;
+  margin-top: 3rem;
+}
+
+.footer a{
+  color: #000;
+  text-decoration: none;
+}
+
+.footer .footer-right{
+  margin-left: auto;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing .title {
+  font-size: 1.25em;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  margin-top: -3rem;
+}
+
+.landing .title h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.landing .left {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  width: 50%;
+}
+
+.landing .left .description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #777;
+}
+
+.landing .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.landing .questions {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.question * {
+  text-decoration: none;
+}
+
+.question p {
+  color: #777;
+}
+
+.question h2 {
   color: #000;
 }
