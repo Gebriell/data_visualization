@@ -39,7 +39,7 @@ function Question1() {
           indexAxis: 'y',
           plugins: {
             legend: {
-              display: true,
+              display: false,
               position: 'right',
               labels: {
                 boxWidth: 10, // Adjust box width for legend colors
@@ -70,7 +70,7 @@ function Question1() {
   return (
     <div>
         <h1>Which genres are most likely to be watched?</h1>
-        <canvas ref={chartContainer} width="400" height="400" />
+        <canvas ref={chartContainer} width="100%" height="50%" />
     </div>
   );
 }
