@@ -19,7 +19,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
-    "topojson": "^3.0.2"
+    "topojson": "^3.0.2",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
